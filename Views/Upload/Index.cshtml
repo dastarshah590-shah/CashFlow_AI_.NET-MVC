@@ -1,0 +1,69 @@
+@{
+    ViewData["Title"] = "Upload transactions";
+    var errors = ViewBag.Errors as IEnumerable<string>;
+}
+
+<section class="page-band upload-page">
+    <div class="container">
+        <div class="section-heading" data-aos="fade-up">
+            <p class="eyebrow">CSV import</p>
+            <h1>Upload transactions</h1>
+            <p>Use columns named date, description, amount, and type. Type must be income or expense.</p>
+        </div>
+
+        @if (errors?.Any() == true)
+        {
+            <div class="alert alert-danger cf-alert" role="alert" data-aos="fade-up">
+                <strong>Import stopped</strong>
+                <ul class="mb-0 mt-2">
+                    @foreach (var error in errors)
+                    {
+                        <li>@error</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <div class="upload-grid">
+            <form asp-controller="Upload" asp-action="Index" method="post" enctype="multipart/form-data" id="uploadForm" class="upload-form" data-aos="fade-up">
+                @Html.AntiForgeryToken()
+                <input class="visually-hidden" type="file" id="csvFile" name="csvFile" accept=".csv,text/csv" />
+                <label for="csvFile" class="drop-zone" id="dropZone">
+                    <i class="bi bi-cloud-arrow-up" aria-hidden="true"></i>
+                    <span class="drop-title">Drop a CSV here</span>
+                    <span class="drop-copy">or choose one from your device</span>
+                </label>
+
+                <div class="file-meta d-none" id="fileMeta"></div>
+
+                <div class="progress upload-progress d-none" id="uploadProgress" role="progressbar" aria-label="Upload progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" style="width: 0%"></div>
+                </div>
+
+                <div class="upload-actions">
+                    <button type="submit" class="btn btn-cf-primary" id="uploadButton" disabled>
+                        <i class="bi bi-arrow-up-circle" aria-hidden="true"></i>
+                        <span>Upload and forecast</span>
+                    </button>
+                    <a class="btn btn-cf-ghost" href="~/samples/sample-transactions.csv" download>
+                        <i class="bi bi-download" aria-hidden="true"></i>
+                        <span>Sample CSV</span>
+                    </a>
+                </div>
+            </form>
+
+            <div class="preview-panel" id="previewPanel" data-aos="fade-up" data-aos-delay="80">
+                <div class="preview-empty" id="previewEmpty">
+                    <i class="bi bi-table" aria-hidden="true"></i>
+                    <span>CSV preview will appear here.</span>
+                </div>
+                <div class="preview-table-wrap d-none" id="previewTableWrap">
+                    <table class="table table-dark table-sm align-middle mb-0">
+                        <thead id="previewHead"></thead>
+                        <tbody id="previewBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

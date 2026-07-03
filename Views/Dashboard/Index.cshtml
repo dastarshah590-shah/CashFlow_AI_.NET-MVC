@@ -1,0 +1,92 @@
+@model ForecastResult
+@{
+    ViewData["Title"] = "Dashboard";
+    var hasData = ViewBag.HasData as bool? ?? false;
+}
+
+<section class="page-band dashboard-page" data-dashboard data-has-data="@hasData.ToString().ToLowerInvariant()" data-data-url="@Url.Action("Data", "Dashboard")">
+    <div class="container">
+        <div class="dashboard-head" data-aos="fade-up">
+            <div>
+                <p class="eyebrow">Forecast dashboard</p>
+                <h1>Cash position</h1>
+            </div>
+            <a class="btn btn-cf-ghost" asp-controller="Upload" asp-action="Index">
+                <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+                <span>Replace CSV</span>
+            </a>
+        </div>
+
+        <div id="dashboardEmpty" class="empty-state @(hasData ? "d-none" : "")" data-aos="fade-up">
+            <i class="bi bi-file-earmark-arrow-up" aria-hidden="true"></i>
+            <h2>No forecast yet</h2>
+            <p>Upload a CSV to generate the weekly projection, chart, risk badge, and AI insight.</p>
+            <a class="btn btn-cf-primary" asp-controller="Upload" asp-action="Index">
+                <i class="bi bi-cloud-arrow-up" aria-hidden="true"></i>
+                <span>Upload CSV</span>
+            </a>
+        </div>
+
+        <div id="dashboardSkeleton" class="dashboard-skeleton @(hasData ? "" : "d-none")" aria-live="polite">
+            <div class="row g-3">
+                <div class="col-md-4"><div class="skeleton-card"></div></div>
+                <div class="col-md-4"><div class="skeleton-card"></div></div>
+                <div class="col-md-4"><div class="skeleton-card"></div></div>
+            </div>
+            <div class="skeleton-chart"></div>
+            <div class="skeleton-insight"></div>
+        </div>
+
+        <div id="dashboardContent" class="dashboard-content d-none">
+            <div class="metrics-grid">
+                <div class="metric-card" data-aos="fade-up">
+                    <span>Current Balance</span>
+                    <strong id="currentBalance">$0</strong>
+                </div>
+                <div class="metric-card" data-aos="fade-up" data-aos-delay="80">
+                    <span>30-Day Projected Balance</span>
+                    <strong id="projectedBalance">$0</strong>
+                </div>
+                <div class="metric-card" data-aos="fade-up" data-aos-delay="160">
+                    <span>Weekly Burn Rate</span>
+                    <strong id="burnRate">$0</strong>
+                </div>
+            </div>
+
+            <div class="risk-row" data-aos="fade-up">
+                <span class="risk-label">Risk status</span>
+                <span class="risk-badge" id="riskBadge">Loading</span>
+            </div>
+
+            <div class="chart-panel" data-aos="fade-up">
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-label">Historical + forecasted balance</span>
+                        <h2>Weekly cash runway</h2>
+                    </div>
+                    <span class="danger-key">Danger zone below $0</span>
+                </div>
+                <div class="chart-wrap">
+                    <canvas id="cashFlowChart" aria-label="Historical and projected cash flow chart"></canvas>
+                </div>
+            </div>
+
+            <div class="insight-panel" data-aos="fade-up">
+                <div class="panel-heading">
+                    <div>
+                        <span class="panel-label">AI insight</span>
+                        <h2>Risk explanation</h2>
+                    </div>
+                    <i class="bi bi-stars" aria-hidden="true"></i>
+                </div>
+                <p id="aiInsight" class="typewriter-text"></p>
+            </div>
+        </div>
+
+        <div id="dashboardError" class="alert alert-danger cf-alert d-none" role="alert"></div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/dashboard.js" asp-append-version="true"></script>
+}

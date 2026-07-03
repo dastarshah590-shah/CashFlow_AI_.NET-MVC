@@ -1,0 +1,29 @@
+date,description,amount,type
+2026-04-06,Client retainer - Northstar Studio,18500,income
+2026-04-07,Payroll,9800,expense
+2026-04-09,Software subscriptions,1240,expense
+2026-04-13,Client invoice - Meadow Foods,22100,income
+2026-04-15,Contractor design support,3400,expense
+2026-04-20,Office rent,4200,expense
+2026-04-21,Client invoice - Verdant Supply,16400,income
+2026-04-24,Cloud infrastructure,1880,expense
+2026-04-27,Payroll,10150,expense
+2026-04-29,Marketing campaign,5200,expense
+2026-05-04,Client retainer - Northstar Studio,18500,income
+2026-05-06,Insurance premium,2600,expense
+2026-05-11,Client invoice - Harbor Clinic,19600,income
+2026-05-12,Payroll,10450,expense
+2026-05-18,Vendor payment - Equipment lease,6100,expense
+2026-05-19,Client invoice - Meadow Foods,17600,income
+2026-05-25,Payroll,10800,expense
+2026-05-27,Travel and client meetings,2950,expense
+2026-06-01,Client retainer - Northstar Studio,18500,income
+2026-06-03,Cloud infrastructure,2060,expense
+2026-06-08,Delayed invoice - Verdant Supply,9800,income
+2026-06-09,Payroll,11250,expense
+2026-06-15,Office rent,4200,expense
+2026-06-16,Client invoice - Harbor Clinic,14200,income
+2026-06-22,Payroll,11300,expense
+2026-06-23,Contractor engineering support,4800,expense
+2026-06-29,Client retainer - Northstar Studio,18500,income
+2026-07-01,Tax estimate,7200,expense

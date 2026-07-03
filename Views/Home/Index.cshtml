@@ -1,0 +1,92 @@
+@{
+    ViewData["Title"] = "Cash forecasting dashboard";
+}
+
+<section class="hero-section">
+    <div class="hero-gradient" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container hero-inner">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div class="hero-copy-block">
+                    <p class="eyebrow">Cash forecasting for operators</p>
+                    <h1>CashFlow AI</h1>
+                    <p class="hero-copy">
+                        Upload transactions, forecast weekly balances, and get a clear read on cash risk before it becomes a scramble.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-cf-primary btn-lg" asp-controller="Upload" asp-action="Index">
+                            <i class="bi bi-play-fill" aria-hidden="true"></i>
+                            <span>See it in action</span>
+                        </a>
+                        <a class="btn btn-cf-ghost btn-lg" asp-controller="Dashboard" asp-action="Index">
+                            <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+                            <span>Open dashboard</span>
+                        </a>
+                    </div>
+                    <div class="hero-proof" aria-label="Forecast snapshot">
+                        <span><strong>10</strong> week projection</span>
+                        <span><strong>CSV</strong> import</span>
+                        <span><strong>AI</strong> insight</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-dashboard" data-aos="fade-up">
+                    <div class="hero-dashboard-header">
+                        <div>
+                            <span class="panel-label">Operating cash</span>
+                            <strong>$84,300</strong>
+                        </div>
+                        <span class="risk-badge risk-green">Healthy</span>
+                    </div>
+                    <div class="hero-chart-wrap">
+                        <canvas id="heroPreviewChart" aria-label="Cash balance preview chart"></canvas>
+                    </div>
+                    <div class="preview-metrics">
+                        <div>
+                            <span>30-day balance</span>
+                            <strong>$92,780</strong>
+                        </div>
+                        <div>
+                            <span>Weekly burn</span>
+                            <strong>$18,450</strong>
+                        </div>
+                        <div>
+                            <span>Risk weeks</span>
+                            <strong>0</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-band">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="value-tile">
+                    <i class="bi bi-filetype-csv" aria-hidden="true"></i>
+                    <h2>Import cleanly</h2>
+                    <p>Parse date, description, amount, and income or expense type into a session-scoped ledger.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="80">
+                <div class="value-tile">
+                    <i class="bi bi-activity" aria-hidden="true"></i>
+                    <h2>Forecast weekly</h2>
+                    <p>Use recent cash movement with higher weight on the latest weeks to project the next 8-12 weeks.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="160">
+                <div class="value-tile">
+                    <i class="bi bi-stars" aria-hidden="true"></i>
+                    <h2>Explain risk</h2>
+                    <p>Turn the forecast into plain-English risk notes and practical next moves for the operator.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
