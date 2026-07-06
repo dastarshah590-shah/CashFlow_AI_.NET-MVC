@@ -11,3 +11,6 @@ appsettings.Local.json
 secrets.json
 logs/
 *.log
+App_Data/DataProtectionKeys/
+.chrome-capture*/
+.edge-capture-profile/

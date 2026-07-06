@@ -11,6 +11,7 @@ namespace CashFlowAI.Controllers;
 public class UploadController(AppDbContext dbContext, ILogger<UploadController> logger) : Controller
 {
     private const string SessionKey = "CashFlowAI.SessionId";
+    private const string DemoSessionKey = "CashFlowAI.Demo";
     private static readonly string[] RequiredHeaders = ["date", "description", "amount", "type"];
 
     [HttpGet]
@@ -53,6 +54,7 @@ public class UploadController(AppDbContext dbContext, ILogger<UploadController> 
         await dbContext.SaveChangesAsync(cancellationToken);
 
         logger.LogInformation("Imported {Count} transactions for session {SessionId}", transactions.Count, sessionId);
+        HttpContext.Session.Remove(DemoSessionKey);
         return RedirectToAction("Index", "Dashboard");
     }
 
